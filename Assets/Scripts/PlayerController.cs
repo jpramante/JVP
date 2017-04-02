@@ -5,28 +5,44 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	public float velocidade;
-	float input_x, input_y;
+	public float velocidade = 1500;
+	float direction;
+
+	public float JumpForce = 500;
+	private bool canJump = false;
 
 	Rigidbody2D rb;
 
 
 	void Start () 
 	{
+		//colocar rigidbody no player
 		rb = GetComponent<Rigidbody2D> ();
-		velocidade = 100 * Time.deltaTime;
 	}
 	
 
 	void Update () 
 	{
-		input_x = Input.GetAxisRaw ("Horizontal") * velocidade;
-					
-		input_y = Input.GetAxisRaw ("Vertical") * velocidade;
-
-		if (input_x != 0 &&) 
+		if (Input.GetButtonDown ("Jump") && canJump == true) 
 		{
-			rb.velocity = new Vector3 (1, 0, 0) * input_x;
+			rb.AddForce (new Vector2 (0, JumpForce));
+		}
+		
+		float direction = Input.GetAxis("Horizontal");
+		rb.velocity = new Vector2(direction * Time.deltaTime * velocidade, rb.velocity.y);
+	}
+	void OnCollisionEnter2D(Collision2D other)
+	{       
+		//colocar a tag Chao
+		if (other.gameObject.tag == "Chao") {
+			canJump = true;
+		}
+	}
+
+	void OnCollisionExit2D(Collision2D other)
+	{
+		if (other.gameObject.tag == "Chao") {
+			canJump = false;
 		}
 	}
 }
