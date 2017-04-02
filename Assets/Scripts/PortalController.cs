@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PortalController : MonoBehaviour {
 
@@ -19,6 +20,10 @@ public class PortalController : MonoBehaviour {
 		{
 			Vector2 PortalPosition = PortalExit.transform.position;
 			gameObject.transform.position = PortalPosition;
+		}
+		if (col.gameObject.tag == "EndFase") 
+		{
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 		}
 	}
 }
