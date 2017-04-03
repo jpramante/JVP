@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	public float velocidade = 1500;
+	public float velocidade_inicial = 700;
+	float velocidade;
 	float direction;
 
-	public float JumpForce = 500;
+	public float JumpForce = 700;
 	private bool canJump = false;
 
 	Rigidbody2D rb;
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour {
 
 	void Start () 
 	{
+		velocidade = velocidade_inicial;
 		//colocar rigidbody no player
 		rb = GetComponent<Rigidbody2D> ();
 	}
@@ -23,13 +25,19 @@ public class PlayerController : MonoBehaviour {
 
 	void Update () 
 	{
+
+		float direction = Input.GetAxis ("Horizontal");
+		if (canJump == false)
+			velocidade = (velocidade_inicial / 2);
+		else if (canJump == true)
+			velocidade = velocidade_inicial;
+		
+			rb.velocity = new Vector2 (direction * Time.deltaTime * velocidade, rb.velocity.y);
+
 		if (Input.GetButtonDown ("Jump") && canJump == true) 
 		{
 			rb.AddForce (new Vector2 (0, JumpForce));
 		}
-		
-		float direction = Input.GetAxis("Horizontal");
-		rb.velocity = new Vector2(direction * Time.deltaTime * velocidade, rb.velocity.y);
 	}
 	void OnCollisionEnter2D(Collision2D other)
 	{       
