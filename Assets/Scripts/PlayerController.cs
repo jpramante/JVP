@@ -37,10 +37,8 @@ public class PlayerController : MonoBehaviour {
 
 			if (canJump0 == false) {
 				velocidade = (velocidade_inicial / 2);
-				print (velocidade + "vel false");
 			} else if (canJump0 == true) {
 				velocidade = velocidade_inicial;
-				print (velocidade + "vel true");
 			}
 
 			if (InputArcade.Apertou (0, EControle.VERDE) && canJump0 == true) 
@@ -85,7 +83,6 @@ public class PlayerController : MonoBehaviour {
 		if (other.gameObject.name == "Player1" && gameObject.name == "Player0") {
 			Physics2D.IgnoreCollision (other.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 		}
-
 	}
 
 	void OnCollisionExit2D(Collision2D other)

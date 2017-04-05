@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PortalController : MonoBehaviour {
 
@@ -20,15 +19,16 @@ public class PortalController : MonoBehaviour {
 	void Start ()
 	{
 		Spawn = GameObject.Find ("Spawn");
+
 		CheckPoint = Spawn.transform.position;
 		SizePortal = PortaisEnter.Length;
+
 		//adicionar as tags "PortalExit" e "PortalEnter" dos portais
 		PortalExit = GameObject.FindGameObjectWithTag ("PortalExit");
 		PortalEnter = GameObject.FindGameObjectWithTag ("PortalEnter");
 	}
 	void Update()
-	{
-		
+	{		
 	}
 	void OnTriggerEnter2D (Collider2D col)
 	{
@@ -44,7 +44,7 @@ public class PortalController : MonoBehaviour {
 
 		}
 
-		if (col.gameObject.tag == "PortalExit") 
+		if (col.gameObject.tag == "PortalExit")
 		{
 			Debug.Log ("Check");
 			CheckPoint = PortalPosition;
@@ -54,9 +54,6 @@ public class PortalController : MonoBehaviour {
 		{
 			gameObject.transform.position = CheckPoint;
 		}
-		if (col.gameObject.tag == "EndFase") 
-		{
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-		}
+
 	}
 }
