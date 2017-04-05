@@ -7,6 +7,9 @@ public class PortalController : MonoBehaviour {
 
 	GameObject PortalExit;
 	GameObject PortalEnter;
+	GameObject Spawn;
+
+	Vector2 CheckPoint,PortalPosition;
 
 	int SizePortal;
 	int posi;
@@ -16,6 +19,8 @@ public class PortalController : MonoBehaviour {
 
 	void Start ()
 	{
+		Spawn = GameObject.Find ("Spawn");
+		CheckPoint = Spawn.transform.position;
 		SizePortal = PortaisEnter.Length;
 		//adicionar as tags "PortalExit" e "PortalEnter" dos portais
 		PortalExit = GameObject.FindGameObjectWithTag ("PortalExit");
@@ -32,11 +37,22 @@ public class PortalController : MonoBehaviour {
 			if (PortaisEnter[posi] == col.gameObject)//verifica se o portal que foi colidido pelo player é igual ao do loop
 			{
 				if (col.gameObject.tag == "PortalEnter") {
-					Vector2 PortalPosition = PortaisExit [posi].transform.position;
+					PortalPosition = PortaisExit [posi].transform.position;
 					gameObject.transform.position = PortalPosition;
 				}
 			}
 
+		}
+
+		if (col.gameObject.tag == "PortalExit") 
+		{
+			Debug.Log ("Check");
+			CheckPoint = PortalPosition;
+			col.gameObject.GetComponent<BoxCollider2D> ().enabled = false;
+		}
+		if (col.gameObject.tag == "LineOut") 
+		{
+			gameObject.transform.position = CheckPoint;
 		}
 		if (col.gameObject.tag == "EndFase") 
 		{

@@ -82,6 +82,10 @@ public class PlayerController : MonoBehaviour {
 			canJump1 = true;
 		}
 
+		if (other.gameObject.name == "Player1" && gameObject.name == "Player0") {
+			Physics2D.IgnoreCollision (other.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+		}
+
 	}
 
 	void OnCollisionExit2D(Collision2D other)
