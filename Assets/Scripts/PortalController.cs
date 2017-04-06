@@ -46,7 +46,6 @@ public class PortalController : MonoBehaviour {
 
 		if (col.gameObject.tag == "PortalExit") 
 		{
-			Debug.Log ("Check");
 			CheckPoint = PortalPosition;
 			col.gameObject.GetComponent<BoxCollider2D> ().enabled = false;
 			GameObject Spawn = GameObject.FindGameObjectWithTag ("Spawn");

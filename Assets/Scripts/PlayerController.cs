@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour {
 	public float velocidade_inicial = 400;
 	float velocidade;
 
-	public float JumpForce = 400;
-	private bool canJump0, canJump1 = false;
+	public float JumpForce = 350;
+	private bool canJump0, canJump1, button = false;
 
 	Rigidbody2D rb;
 
@@ -71,11 +71,11 @@ public class PlayerController : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other)
 	{       
 		//colocar a tag Chao
-		if (other.gameObject.tag == "Chao" && gameObject.name == "Player0") 
+		if (other.gameObject.tag == "Chao" ||  other.gameObject.tag == "Botao" && gameObject.name == "Player0") 
 		{
 			canJump0 = true;
 		}
-		else if (other.gameObject.tag == "Chao" && gameObject.name == "Player1")
+		if (other.gameObject.tag == "Chao"  && gameObject.name == "Player1")
 		{
 			canJump1 = true;
 		}
@@ -87,11 +87,11 @@ public class PlayerController : MonoBehaviour {
 
 	void OnCollisionExit2D(Collision2D other)
 	{
-		if (other.gameObject.tag == "Chao" && gameObject.name == "Player0")
+		if (other.gameObject.tag == "Chao" || other.gameObject.tag == "Botao" && gameObject.name == "Player0")
 		{
-			canJump0 = false;
+				canJump0 = false;
 		}
-		else if (other.gameObject.tag == "Chao" && gameObject.name == "Player1")
+		else if (other.gameObject.tag == "Chao"  && gameObject.name == "Player1")
 		{
 			canJump1 = false;
 		}
