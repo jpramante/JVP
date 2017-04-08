@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour {
 	{
 		Player0 ();
 		Player1 ();
+		Debug.Log(canJump1);
 	}
 
 
@@ -93,6 +94,7 @@ public class PlayerController : MonoBehaviour {
 			}
 			else
 				play.Play("IdleP2");
+			
 			rb.velocity = new Vector2 (direction * Time.deltaTime * velocidade, rb.velocity.y);
 		}	
 	}
@@ -117,10 +119,11 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Chao" || other.gameObject.tag == "Botao" && gameObject.name == "Player0")
 		{
-				canJump0 = false;
+			canJump0 = false;
 		}
-		else if (other.gameObject.tag == "Chao"  && gameObject.name == "Player1")
+		if (other.gameObject.tag == "Chao"  && gameObject.name == "Player1")
 		{
+			Debug.Log(canJump1);
 			canJump1 = false;
 		}
 	}

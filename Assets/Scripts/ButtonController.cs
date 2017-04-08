@@ -29,6 +29,13 @@ public class ButtonController : MonoBehaviour {
 				col.GetComponent<Rigidbody2D> ().gravityScale = 100;
 			}
 		}
+			if (col.gameObject.name == "Player0") 
+			{
+//				portao.transform.position = new Vector2 (portao.transform.position.x, portao.transform.position.y - (transform.up.y * 2.5f));
+//				portao.transform.localScale = new Vector2 (portao.transform.localScale.x, 1f);
+
+			Destroy (portao, 0.1f);
+			}
 	}
 
 	void OnTriggerExit2D(Collider2D col)
@@ -39,24 +46,12 @@ public class ButtonController : MonoBehaviour {
 		}
 	}
 
-
-	void OnCollisionEnter2D(Collision2D col)
-	{
-		bool verifica = true;
-		if (col.gameObject.name == "Player0" && verifica == true) 
-		{
-			portao.transform.position = new Vector2 (portao.transform.position.x, portao.transform.position.y - (transform.up.y * 2.5f));
-			portao.transform.localScale = new Vector2 (portao.transform.localScale.x, 1f);
-			verifica = false;
-		}
-	}
-
-	void OnCollisionExit2D(Collision2D col)
-	{
-//		if (col.gameObject.name == "Player0") 
-//		{
-//			portao.transform.position = new Vector2 (portao.transform.position.x, portao.transform.position.y + (transform.up.y * 2.5f));
-//			portao.transform.localScale = new Vector2 (portao.transform.localScale.x, 4);
-//		}
-	}
+//	void OnCollisionExit2D(Collision2D col)
+//	{
+////		if (col.gameObject.name == "Player0") 
+////		{
+////			portao.transform.position = new Vector2 (portao.transform.position.x, portao.transform.position.y + (transform.up.y * 2.5f));
+////			portao.transform.localScale = new Vector2 (portao.transform.localScale.x, 4);
+////		}
+//	}
 }

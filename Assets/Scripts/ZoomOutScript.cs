@@ -8,7 +8,7 @@ public class ZoomOutScript : MonoBehaviour {
 	public GameObject cam0, cam1;
 
 	int zoomOut = 120;
-	int normal = 30;
+	int normal = 40;
 	float smooth = 5;
 
 	bool P0Col = false; 
