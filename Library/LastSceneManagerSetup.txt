@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scene/Fase_1 montada.unity
+- path: Assets/Scene/TitleScreen.unity
   isLoaded: 1
   isActive: 1
