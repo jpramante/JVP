@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Recomeçar : MonoBehaviour {
+public class Recomecar : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
