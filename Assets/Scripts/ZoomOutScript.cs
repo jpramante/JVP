@@ -30,7 +30,7 @@ public class ZoomOutScript : MonoBehaviour {
 	{
 		if (col.gameObject.tag == "Player") 
 		{
-			if (col.gameObject.name == "Player0")
+			if(col.gameObject.name == "Player0")
 				P0Col = true;
 			if(col.gameObject.name == "Player1")
 				P1Col = true;

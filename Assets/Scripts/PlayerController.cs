@@ -6,14 +6,14 @@ using ArcadePUCCampinas;
 public class PlayerController : MonoBehaviour {
 
 	public float velocidade_inicial = 400;
-	float velocidade;
+	private float velocidade;
 
 	public float JumpForce = 350;
-	private bool canJump0, canJump1, button = false;
+	private bool canJump0, canJump1;
 
-	Rigidbody2D rb;
-	Animator play;
-	SpriteRenderer sprite;
+	private Rigidbody2D rb;
+	private Animator play;
+	private SpriteRenderer sprite;
 
 
 	void Start () 
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour {
 	{
 		Player0 ();
 		Player1 ();
-		Debug.Log(canJump1);
+		//Debug.Log(canJump1);
 	}
 
 

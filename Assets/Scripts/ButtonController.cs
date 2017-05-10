@@ -16,42 +16,11 @@ public class ButtonController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.gameObject.tag == "Player") 
+		if (col.gameObject.name == "Player0") 
 		{
-			if(col.transform.position.x < gameObject.transform.position.x)
-			{
-				col.transform.position = new Vector2 (gameObject.transform.position.x - 0.5f, gameObject.transform.position.y + transform.up.y);
-				col.GetComponent<Rigidbody2D> ().gravityScale = 100;
-			}
-			else if(col.transform.position.x > gameObject.transform.position.x)
-			{
-				col.transform.position = new Vector2 (gameObject.transform.position.x + 0.5f, gameObject.transform.position.y + transform.up.y);
-				col.GetComponent<Rigidbody2D> ().gravityScale = 100;
-			}
-		}
-			if (col.gameObject.name == "Player0") 
-			{
-//				portao.transform.position = new Vector2 (portao.transform.position.x, portao.transform.position.y - (transform.up.y * 2.5f));
-//				portao.transform.localScale = new Vector2 (portao.transform.localScale.x, 1f);
-
 			Destroy (portao, 0.1f);
-			}
-	}
-
-	void OnTriggerExit2D(Collider2D col)
-	{
-		if (col.gameObject.tag == "Player") 
-		{
-			col.GetComponent<Rigidbody2D> ().gravityScale = 1;
 		}
 	}
-
-//	void OnCollisionExit2D(Collision2D col)
-//	{
-////		if (col.gameObject.name == "Player0") 
-////		{
-////			portao.transform.position = new Vector2 (portao.transform.position.x, portao.transform.position.y + (transform.up.y * 2.5f));
-////			portao.transform.localScale = new Vector2 (portao.transform.localScale.x, 4);
-////		}
-//	}
 }
+
+

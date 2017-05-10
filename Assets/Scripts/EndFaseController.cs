@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EndFaseController : MonoBehaviour {
 
-
-	bool P0Ganhou, P1Ganhou;
+	private bool P0Ganhou, P1Ganhou;
 
 	void Start () 
 	{

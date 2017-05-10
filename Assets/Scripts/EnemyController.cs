@@ -1,72 +1,82 @@
-﻿using System.Collections;
+﻿//
+//	EnemyController for unity3D 5.5.2
+//	Created By Pedro Gomes
+//
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
 
-	public GameObject shot0, shot1;
-	bool player0Aqui, player1Aqui;
+	private string enemyPlayer, enemy;
+
+	//Shooter shooter;
+
+	public GameObject shot;
+
+	private bool onAlert = false;
+
+	public enum PLAYERENEMY_TYPE
+	{
+		ENEMY0,
+		ENEMY1
+	}
+
+	public PLAYERENEMY_TYPE player_type = PLAYERENEMY_TYPE.ENEMY0;
 
 	void Start () 
 	{
-		player0Aqui = false;
-		player1Aqui = false;
+		ToggleEnemy ();
+		enemyPlayer = "Player0";
+		gameObject.name = enemy;
 	}
 
 	void Update () 
 	{
-		
+		ToggleEnemy ();
 	}
 
-	void OnCollisionEnter2D(Collision2D col)
-	{
-		
-	}
-	void OnCollisionExit2D(Collision2D col)
-	{
-
-	}
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.gameObject.name == "Player0" && player0Aqui == false && gameObject.tag == "Enemy0") 
+		if (col.gameObject.name == enemyPlayer) 
 		{
-			Debug.Log("Entrou");
-			player0Aqui = true;
-			Invoke ("SpawnaShot", 1);
+			onAlert = true;
+			shoot ();
 		}
-		if (col.gameObject.name == "Player1" && player1Aqui == false && gameObject.tag == "Enemy1") 
-		{
-			Debug.Log("Entrou");
-			player1Aqui = true;
-			Invoke ("SpawnaShot", 1);
-		}
-
 	}
 	void OnTriggerExit2D(Collider2D col)
 	{
-		if (col.gameObject.name == "Player0")
+		if (col.gameObject.name == enemyPlayer) 
+			onAlert = false;
+	}
+
+	public void ToggleEnemy()
+	{
+		switch (player_type)
 		{
-			Debug.Log("Saiu");
-			player0Aqui = false;
-		}
-		if (col.gameObject.name == "Player1")
-		{
-			Debug.Log("Saiu");
-			player1Aqui = false;
+		case PLAYERENEMY_TYPE.ENEMY0:
+			enemy = "Enemy0";
+			enemyPlayer = "Player0";
+			gameObject.GetComponent<SpriteRenderer> ().color = Color.black;
+			break;
+		case PLAYERENEMY_TYPE.ENEMY1:
+			enemy = "Enemy1";
+			enemyPlayer = "Player1";
+			gameObject.GetComponent<SpriteRenderer> ().color = Color.white;
+			break;
+		default:
+			break;
 		}
 	}
 
-	void SpawnaShot()
+	public void shoot()
 	{
-		if (player0Aqui == true) 
+		if (onAlert == true) 
 		{
-			Instantiate (shot0, gameObject.transform.position, Quaternion.identity);
-			Invoke ("SpawnaShot", 3);
-		}
-		if (player1Aqui == true) 
-		{
-			Instantiate (shot1, gameObject.transform.position, Quaternion.identity);
-			Invoke ("SpawnaShot", 3);
+			//shooter = new Shooter();
+			//shooter.Shoot (enemy);
+			Instantiate (shot, gameObject.transform.position, Quaternion.identity);
+			Invoke ("shoot", 2f);
 		}
 	}
 }
