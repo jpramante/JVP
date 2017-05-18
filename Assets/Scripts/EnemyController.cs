@@ -73,8 +73,6 @@ public class EnemyController : MonoBehaviour {
 	{
 		if (onAlert == true) 
 		{
-			//shooter = new Shooter();
-			//shooter.Shoot (enemy);
 			Instantiate (shot, gameObject.transform.position, Quaternion.identity);
 			Invoke ("shoot", 2f);
 		}

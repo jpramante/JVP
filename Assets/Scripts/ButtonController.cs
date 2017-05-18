@@ -6,17 +6,9 @@ public class ButtonController : MonoBehaviour {
 
 	public GameObject portao;
 
-	void Start () 
-	{
-	}
-
-	void Update () 
-	{
-	}
-
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.gameObject.name == "Player0") 
+		if (col.gameObject.name == "Player1") 
 		{
 			Destroy (portao, 0.1f);
 		}

@@ -5,8 +5,8 @@ using ArcadePUCCampinas;
 
 public class PlayerController : MonoBehaviour {
 
-	public float velocidade_inicial = 400;
-	private float velocidade;
+	public float Start_Velocity = 400;
+	private float Velocity;
 
 	public float JumpForce = 350;
 	private bool canJump0, canJump1;
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
 
 	void Start () 
 	{
-		velocidade = velocidade_inicial;
+		Velocity = Start_Velocity;
 		play = GetComponent<Animator> ();
 		sprite = GetComponent<SpriteRenderer> ();
 	}
@@ -41,9 +41,9 @@ public class PlayerController : MonoBehaviour {
 			rb = GetComponent<Rigidbody2D> ();
 
 			if (canJump0 == false) {
-				velocidade = (velocidade_inicial / 2);
+				Velocity = (Start_Velocity / 2);
 			} else if (canJump0 == true) {
-				velocidade = velocidade_inicial;
+				Velocity = Start_Velocity;
 			}
 
 			if (InputArcade.Apertou (0, EControle.VERDE) && canJump0 == true) 
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour {
 			}
 			else
 				play.Play("Idle_black");
-			rb.velocity = new Vector2 (direction * Time.deltaTime * velocidade, rb.velocity.y);
+			rb.velocity = new Vector2 (direction * Time.deltaTime * Velocity, rb.velocity.y);
 		}	
 	}
 	void Player1()
@@ -74,9 +74,9 @@ public class PlayerController : MonoBehaviour {
 			rb = GetComponent<Rigidbody2D> ();
 
 			if (canJump1 == false)
-				velocidade = (velocidade_inicial / 2);
+				Velocity = (Start_Velocity / 2);
 			else if (canJump1 == true)
-				velocidade = velocidade_inicial;
+				Velocity = Start_Velocity;
 
 			if (InputArcade.Apertou (1, EControle.VERDE) && canJump1 == true) 
 			{
@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour {
 			else
 				play.Play("IdleP2");
 			
-			rb.velocity = new Vector2 (direction * Time.deltaTime * velocidade, rb.velocity.y);
+			rb.velocity = new Vector2 (direction * Time.deltaTime * Velocity, rb.velocity.y);
 		}	
 	}
 	void OnCollisionEnter2D(Collision2D other)
