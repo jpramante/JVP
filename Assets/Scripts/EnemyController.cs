@@ -26,14 +26,14 @@ public class EnemyController : MonoBehaviour {
 
 	void Start () 
 	{
-		ToggleEnemy ();
 		enemyPlayer = "Player0";
+		ToggleEnemy ();
 		gameObject.name = enemy;
 	}
 
 	void Update () 
 	{
-		ToggleEnemy ();
+		LookThePlayer();
 	}
 
 	void OnTriggerEnter2D(Collider2D col)
@@ -74,7 +74,22 @@ public class EnemyController : MonoBehaviour {
 		if (onAlert == true) 
 		{
 			Instantiate (shot, gameObject.transform.position, Quaternion.identity);
-			Invoke ("shoot", 2f);
+			Invoke ("shoot", 3f);
+		}
+	}
+
+	public void LookThePlayer()
+	{
+		GameObject playerEnemy = GameObject.Find (enemyPlayer);
+		if (playerEnemy.transform.position.x - gameObject.transform.position.x < 0)
+		{
+			gameObject.transform.localScale = new Vector3 (1, 1, 1);
+			Shot.RotationSet = -1;
+		}
+		if (playerEnemy.transform.position.x - gameObject.transform.position.x > 0)
+		{
+			gameObject.transform.localScale = new Vector3 (-1, 1, 1);
+			Shot.RotationSet = 1;
 		}
 	}
 }
