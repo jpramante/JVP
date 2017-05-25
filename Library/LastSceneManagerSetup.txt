@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scene/Fase_2Test.unity
+- path: Assets/Scene/Fase_1 montada.unity
   isLoaded: 1
   isActive: 1

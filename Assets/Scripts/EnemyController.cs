@@ -14,6 +14,8 @@ public class EnemyController : MonoBehaviour {
 
 	public GameObject shot;
 
+	float timer = 0;
+
 	private bool onAlert = false;
 
 	public enum PLAYERENEMY_TYPE
@@ -34,6 +36,8 @@ public class EnemyController : MonoBehaviour {
 	void Update () 
 	{
 		LookThePlayer();
+		timer += Time.deltaTime;
+		shoot ();
 	}
 
 	void OnTriggerEnter2D(Collider2D col)
@@ -41,12 +45,12 @@ public class EnemyController : MonoBehaviour {
 		if (col.gameObject.name == enemyPlayer) 
 		{
 			onAlert = true;
-			shoot ();
 		}
 	}
+
 	void OnTriggerExit2D(Collider2D col)
 	{
-		if (col.gameObject.name == enemyPlayer) 
+		if (col.gameObject.name == enemyPlayer)
 			onAlert = false;
 	}
 
@@ -57,11 +61,13 @@ public class EnemyController : MonoBehaviour {
 		case PLAYERENEMY_TYPE.ENEMY0:
 			enemy = "Enemy0";
 			enemyPlayer = "Player0";
+			Shot.enemy = enemyPlayer;
 			gameObject.GetComponent<SpriteRenderer> ().color = Color.black;
 			break;
 		case PLAYERENEMY_TYPE.ENEMY1:
 			enemy = "Enemy1";
 			enemyPlayer = "Player1";
+			Shot.enemy = enemyPlayer;
 			gameObject.GetComponent<SpriteRenderer> ().color = Color.white;
 			break;
 		default:
@@ -71,10 +77,11 @@ public class EnemyController : MonoBehaviour {
 
 	public void shoot()
 	{
-		if (onAlert == true) 
+		if (onAlert && timer >= 2.0f)
 		{
 			Instantiate (shot, gameObject.transform.position, Quaternion.identity);
-			Invoke ("shoot", 3f);
+			timer = 0;
+			Invoke ("shoot", 0f);
 		}
 	}
 
