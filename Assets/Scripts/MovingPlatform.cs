@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour {
 
-	void Start () {
-		
-	}
-	
-	void Update () {
-		
-	}
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        col.transform.parent = gameObject.transform;
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        col.transform.parent = null;
+    }
 }
+

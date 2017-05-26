@@ -8,7 +8,7 @@ public class ButtonController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.gameObject.name == "Player1") 
+		if (col.gameObject.name == "Player0") 
 		{
 			Destroy (portao, 0.1f);
 		}

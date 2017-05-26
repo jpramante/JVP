@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
 	private SpriteRenderer sprite;
 
 
-	void Start () 
+    void Start () 
 	{
 		Velocity = Start_Velocity;
 		play = GetComponent<Animator> ();
@@ -35,7 +35,8 @@ public class PlayerController : MonoBehaviour {
 	void Player0()
 	{
 		if (gameObject.name == "Player0")
-		{			
+		{
+            			
 			float direction = InputArcade.Eixo(0, EEixo.HORIZONTAL);
 
 			rb = GetComponent<Rigidbody2D> ();
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour {
 			{
 				sprite.flipX = false;
 				play.Play("RunP0");
-			}
+            }
 			else if (Input.GetKey (KeyCode.A)) 
 			{
 				sprite.flipX = true;
@@ -62,7 +63,7 @@ public class PlayerController : MonoBehaviour {
 			}
 			else
 				play.Play("Idle_black");
-			rb.velocity = new Vector2 (direction * Time.deltaTime * Velocity, rb.velocity.y);
+                rb.velocity = new Vector2(direction * Time.deltaTime * Velocity, rb.velocity.y);
 		}	
 	}
 	void Player1()

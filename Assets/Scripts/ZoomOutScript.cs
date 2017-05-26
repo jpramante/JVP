@@ -7,7 +7,7 @@ public class ZoomOutScript : MonoBehaviour {
 	//Camera cam0, cam1;
 	public GameObject cam0, cam1;
 
-	int zoomOut = 120;
+	int zoomOut = 150;
 	int normal = 40;
 	float smooth = 5;
 
