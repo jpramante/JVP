@@ -1,13 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\TimedPlatform.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="30" Column="14" />
-      <File FileName="Assets\Scripts\ButtonController.cs" Line="30" Column="5" />
-      <File FileName="Assets\Scripts\PortalController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Recomeçar.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\EndFaseController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ZoomOutScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\TimedPlatform.cs" Line="27" Column="13" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
