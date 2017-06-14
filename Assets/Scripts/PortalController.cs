@@ -13,6 +13,7 @@ public class PortalController : MonoBehaviour {
 		PortalPosition = GameObject.FindGameObjectWithTag ("Spawn").transform.position;
 		CheckPoint = PortalPosition;
 
+		Respawn.spawn = PortalPosition;
 		Respawn.resp = CheckPoint;
 	}
 

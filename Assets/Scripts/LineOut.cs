@@ -14,5 +14,6 @@ public class LineOut : MonoBehaviour {
 	{
 		respawn = new Respawn ();
 		respawn.Respawna(col.gameObject);
+		Debug.Log (col.gameObject.name);
 	}
 }
